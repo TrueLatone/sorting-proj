@@ -1,4 +1,4 @@
-#include "file.h"
+#include "sort.cpp"
 
 template <class T>
 void HoanVi(T &a, T &b)
@@ -94,6 +94,8 @@ int* ParseData(string filename, int &size) {
     return a;
 }
 
+// const string algorithms[12] = {"selection-sort", "insertion-sort", "shell-sort", "bubble-sort", "heap-sort", "merge-sort", "quick-sort", "radix-sort", "counting-sort", "binary-insertion-sort", "shaker-sort", "flash-sort"};
+
 void sortonly(const string& algorithm, int* a, int &n) {
     if (algorithm == "selection-sort") SelectionSort(a, n);
     else if (algorithm == "insertion-sort") InsertionSort(a, n);
@@ -152,45 +154,25 @@ void RunAlgorithm(const string& algorithm, int* a, int &n, bool measureTime, boo
 
 void CompareAlgorithm(const string& algo1, const string& algo2, int* a, int& n) {
     long long comp1 = 0, comp2 = 0;
-    int* copy1 = new int[n]; int* copy2 = new int[n];
+    int* copy1 = new int[n], *copy2 = new int[n], *temp = new int[n];
     for (int i = 0; i < n; i++) copy1[i] = a[i];
     for (int i = 0; i < n; i++) copy2[i] = a[i];
+    for (int i = 0; i < n; i++) temp[i] = a[i];
 
+    sortwithcomp(algo1, copy1, n, comp1);
     auto start1 = high_resolution_clock::now();
-    if (algo1 == "selection-sort") SelectionSort(a, n, comp1);
-    else if (algo1 == "insertion-sort") InsertionSort(a, n, comp1);
-    else if (algo1 == "bubble-sort") BubbleSort(a, n, comp1);
-    else if (algo1 == "flash-sort") FlashSort(a, n, comp1);
-    else if (algo1 == "heap-sort") HeapSort(a, n, comp1);
-    else if (algo1 == "shaker-sort") ShakerSort(a, n, comp1);
-    else if (algo1 == "shell-sort") ShellSort(a, n, comp1);
-    else if (algo1 == "binary-insertion-sort") BinaryInsertionSort(a, n, comp1);
-    else if (algo1 == "merge-sort") MergeSort(a, 0, n - 1, comp1);
-    else if (algo1 == "quick-sort") QuickSort(a, n, comp1);
-    else if (algo1 == "counting-sort") CountingSort(a, n, comp1);
-    else if (algo1 == "radix-sort") RadixSort(a, n, comp1);
-
+    sortonly(algo1, a, n);
     auto end1 = high_resolution_clock::now();
     milliseconds time1 = duration_cast<milliseconds> (end1 - start1);
-    
+    delete[] copy1;
+
+    sortwithcomp(algo2, copy2, n, comp2);
     auto start2 = high_resolution_clock::now();
-    if (algo2 == "selection-sort") SelectionSort(a, n, comp2);
-    else if (algo2 == "insertion-sort") InsertionSort(a, n, comp2);
-    else if (algo2 == "bubble-sort") BubbleSort(a, n, comp2);
-    else if (algo2 == "flash-sort") FlashSort(a, n, comp2);
-    else if (algo2 == "heap-sort") HeapSort(a, n, comp2);
-    else if (algo2 == "shaker-sort") ShakerSort(a, n, comp2);
-    else if (algo2 == "shell-sort") ShellSort(a, n, comp2);
-    else if (algo2 == "binary-insertion-sort") BinaryInsertionSort(a, n, comp2);
-    else if (algo2 == "merge-sort") MergeSort(a, 0, n - 1, comp2);
-    else if (algo2 == "quick-sort") QuickSort(a, n, comp2);
-    else if (algo2 == "counting-sort") CountingSort(a, n, comp2);
-    else if (algo2 == "radix-sort") RadixSort(a, n, comp2);
-    
+    sortonly(algo2, temp, n);
     auto end2 = high_resolution_clock::now();
     milliseconds time2 = duration_cast<milliseconds> (end2 - start2);
-    delete[] copy1;
     delete[] copy2;
+    delete[] temp;
 
     cout << "Running time: " << time1.count() << " | " << time2.count() << endl;
     cout << "Comparisons: " << comp1 << " | " << comp2 << endl;

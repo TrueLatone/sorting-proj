@@ -33,7 +33,10 @@ int main(int argc, char* argv[]) {
                 string param = argv[4];
                 measureTime = (param == "-time" || param == "-both");
                 measureComp = (param == "-comp" || param == "-both");
-
+                if (!measureTime && !measureComp) {
+                    cout << "Parameters might be incorrect. Please check README.txt!" << endl;
+                    return 1;
+                }
                 cout << "Input size: " << size << endl;
                 cout << endl;
                 for (int i = 0; i < 4; i++) {
@@ -119,7 +122,10 @@ int main(int argc, char* argv[]) {
 
             measureTime = (param == "-time" || param == "-both");
             measureComp = (param == "-comp" || param == "-both");
-
+            if (!measureTime && !measureComp) {
+                cout << "Parameters might be incorrect. Please check README.txt!" << endl;
+                return 1;
+            }
             cout << "Input file: " << filename << endl;
             cout << "Input size: " << size << endl;
             cout << "--------------------------------" << endl;
@@ -216,13 +222,5 @@ int main(int argc, char* argv[]) {
     else {
         cout << "Invalid mode! Please use '-a' for algorithm mode or '-c' for compare mode"; 
     }
-
     return 0;
 }
-
-
-
-
-// gjonhoenhoeheojheojhbeijhbejyjbeyojeyejy
-
-// bexuanmailonton

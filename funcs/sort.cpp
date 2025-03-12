@@ -1,12 +1,12 @@
 #include "file.h"
 
-void swap(int &a, int &b) {
+inline void swap(int &a, int &b) {
     int temp = a;
     a = b;
     b = temp;
 }
 
-void SelectionSort(int* a, int n) {
+inline void SelectionSort(int* a, int n) {
     for (int i = 0; i < n - 1; i++) {
         int min = i;
         for (int j = i + 1; j < n; j++) {
@@ -18,7 +18,7 @@ void SelectionSort(int* a, int n) {
     }
 }
 
-void InsertionSort(int* a, int n) {
+inline void InsertionSort(int* a, int n) {
 	for (int i = 1; i < n; i++) {
 		int key = a[i];
 		int j = i - 1;
@@ -31,7 +31,7 @@ void InsertionSort(int* a, int n) {
 	}
 }
 
-void BubbleSort(int* a, int n) {
+inline void BubbleSort(int* a, int n) {
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = 0; j < n - 1 - i; j++) {
 			if (a[j] > a[j+1])
@@ -40,7 +40,7 @@ void BubbleSort(int* a, int n) {
 	}
 }
 
-void FlashSort(int* a, int n) {
+inline void FlashSort(int* a, int n) {
 	int minVal = a[0], max = 0;
 	int m = 0.45 * n;
 	int* l = new int[m];
@@ -95,7 +95,7 @@ void FlashSort(int* a, int n) {
 	InsertionSort(a, n);
 }
 
-void heapify(int* a, int n, int i) {
+inline void heapify(int* a, int n, int i) {
 	int largest = i;
 	int left = 2 * i + 1, right = left + 1;
 	
@@ -110,7 +110,7 @@ void heapify(int* a, int n, int i) {
 	}	
 }
 
-void HeapSort(int* a, int n) {
+inline void HeapSort(int* a, int n) {
 	for (int i = n / 2 - 1; i >= 0; i--) {
 		heapify(a, n, i);
 	}
@@ -121,7 +121,7 @@ void HeapSort(int* a, int n) {
 	}
 }
 
-void ShakerSort(int* a, int n) {
+inline void ShakerSort(int* a, int n) {
 	int start = 0, end = n - 1;
 	bool swapped = true;
 	while (swapped) {
@@ -151,7 +151,7 @@ void ShakerSort(int* a, int n) {
 	}
 }
 
-void ShellSort(int* a, int n) {
+inline void ShellSort(int* a, int n) {
     for (int gap = n / 2; gap > 0; gap /= 2) {
         for (int i = gap; i < n; i++) {
             int key = a[i];
@@ -164,7 +164,7 @@ void ShellSort(int* a, int n) {
     }
 }
 
-int binarySearch(int* a, int k, int low, int high) {
+inline int binarySearch(int* a, int k, int low, int high) {
     if (high <= low) {
         return (k > a[low]) ? (low + 1) : low;
     }
@@ -181,7 +181,7 @@ int binarySearch(int* a, int k, int low, int high) {
     return binarySearch(a, k, low, mid - 1); 
 }
 
-void BinaryInsertionSort(int* a, int n) {
+inline void BinaryInsertionSort(int* a, int n) {
     for (int i = 1; i < n; i++) {
         int key = a[i];
         int j = i - 1;
@@ -194,7 +194,7 @@ void BinaryInsertionSort(int* a, int n) {
     }
 }
 
-void Merge(int* a, int low, int mid, int high) {
+inline void Merge(int* a, int low, int mid, int high) {
     int i = low; 
     int j = mid + 1; 
     int k = 0; 
@@ -219,7 +219,7 @@ void Merge(int* a, int low, int mid, int high) {
     delete[] temp;
 }
 
-void MergeSort(int* a, int low, int high) {
+inline void MergeSort(int* a, int low, int high) {
     if (low < high) {
         int mid = (low + high) / 2;
         MergeSort(a, low, mid);
@@ -228,7 +228,7 @@ void MergeSort(int* a, int low, int high) {
     }
 }
 
-int Partition (int* a , int low , int high) {
+inline int Partition (int* a , int low , int high) {
     int pivot_value = a[high];
     int i = low - 1;
     int temp;
@@ -247,7 +247,7 @@ int Partition (int* a , int low , int high) {
     return i;
 }
 
-void QuickSort_recursion (int* a , int low, int high) {
+inline void QuickSort_recursion (int* a , int low, int high) {
     if (low < high){
     int pivot_index = Partition(a , low , high);
     QuickSort_recursion(a, low, pivot_index - 1);
@@ -255,11 +255,11 @@ void QuickSort_recursion (int* a , int low, int high) {
     }
 }
 
-void QuickSort (int* a , int n) {
+inline void QuickSort (int* a , int n) {
       QuickSort_recursion(a , 0 , n - 1);
 }
 
-void CountingSort (int* a, int n) {
+inline void CountingSort (int* a, int n) {
     int max = a[0];
     for (int i = 0; i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
         if (a[i] > max)        
@@ -287,7 +287,7 @@ void CountingSort (int* a, int n) {
     delete[] s;
 }
 
-void countSort(int arr[], int n, int exp) {
+inline void countSort(int arr[], int n, int exp) {
     int output[n];
     int i, count[10] = {0};
     for (i = 0; i < n; i++)
@@ -304,7 +304,7 @@ void countSort(int arr[], int n, int exp) {
     for (i = 0; i < n; i++) arr[i] = output[i];
 }
 
-void RadixSort(int* a, int n) {
+inline void RadixSort(int* a, int n) {
     int max = a[0];
     for (int i = 1 ; i < n ; i++) { //sane comment from counting sort also applies here
         if (a[i] > max)
@@ -321,13 +321,7 @@ void RadixSort(int* a, int n) {
 
 // FOR COUNTING COMPARISONS
 
-void swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
-
-void SelectionSortc(int* a, int n, long long &comparisons) {
+inline void SelectionSortc(int* a, int n, long long &comparisons) {
     for (int i = 0; ++comparisons && i < n - 1; i++) {
         int min = i;
         for (int j = i + 1; ++comparisons && j < n; j++) {
@@ -339,7 +333,7 @@ void SelectionSortc(int* a, int n, long long &comparisons) {
     }
 }
 
-void InsertionSortc(int* a, int n, long long &comparisons) {
+inline void InsertionSortc(int* a, int n, long long &comparisons) {
 	for (int i = 1; ++comparisons && i < n; i++) {
 		int key = a[i];
 		int j = i - 1;
@@ -352,7 +346,7 @@ void InsertionSortc(int* a, int n, long long &comparisons) {
 	}
 }
 
-void BubbleSortc(int* a, int n, long long &comparisons) {
+inline void BubbleSortc(int* a, int n, long long &comparisons) {
 	for (int i = 0; ++comparisons && i < n - 1; i++) {
 		for (int j = 0; ++comparisons && j < n - 1 - i; j++) {
 			if (++comparisons && a[j] > a[j+1])
@@ -361,7 +355,7 @@ void BubbleSortc(int* a, int n, long long &comparisons) {
 	}
 }
 
-void FlashSortc(int* a, int n, long long &comparisons) {
+inline void FlashSortc(int* a, int n, long long &comparisons) {
 	int minVal = a[0], max = 0;
 	int m = 0.45 * n;
 	int* l = new int[m];
@@ -416,7 +410,7 @@ void FlashSortc(int* a, int n, long long &comparisons) {
 	InsertionSortc(a, n, comparisons);
 }
 
-void heapifyc(int* a, int n, int i, long long &comparisons) {
+inline void heapifyc(int* a, int n, int i, long long &comparisons) {
 	int largest = i;
 	int left = 2 * i + 1, right = left + 1;
 	
@@ -431,7 +425,7 @@ void heapifyc(int* a, int n, int i, long long &comparisons) {
 	}	
 }
 
-void HeapSortc(int* a, int n, long long &comparisons) {
+inline void HeapSortc(int* a, int n, long long &comparisons) {
 	for (int i = n / 2 - 1; ++comparisons && i >= 0; i--) {
 		heapifyc(a, n, i, comparisons);
 	}
@@ -442,7 +436,7 @@ void HeapSortc(int* a, int n, long long &comparisons) {
 	}
 }
 
-void ShakerSortc(int* a, int n, long long &comparisons) {
+inline void ShakerSortc(int* a, int n, long long &comparisons) {
 	int start = 0, end = n - 1;
 	bool swapped = true;
 	while (++comparisons && swapped) {
@@ -472,7 +466,7 @@ void ShakerSortc(int* a, int n, long long &comparisons) {
 	}
 }
 
-void ShellSortc(int* a, int n, long long &comparisons) {
+inline void ShellSortc(int* a, int n, long long &comparisons) {
     for (int gap = n / 2; ++comparisons && gap > 0; gap /= 2) {
         for (int i = gap; ++comparisons && i < n; i++) {
             int key = a[i];
@@ -485,7 +479,7 @@ void ShellSortc(int* a, int n, long long &comparisons) {
     }
 }
 
-int binarySearchc(int* a, int k, int low, int high, long long &comparisons) {
+inline int binarySearchc(int* a, int k, int low, int high, long long &comparisons) {
     if (++comparisons && high <= low) {
         return (++comparisons && k > a[low]) ? (low + 1) : low;
     }
@@ -502,7 +496,7 @@ int binarySearchc(int* a, int k, int low, int high, long long &comparisons) {
     return binarySearchc(a, k, low, mid - 1, comparisons); 
 }
 
-void BinaryInsertionSortc(int* a, int n, long long &comparisons) {
+inline void BinaryInsertionSortc(int* a, int n, long long &comparisons) {
     for (int i = 1; ++comparisons && i < n; i++) {
         int key = a[i];
         int j = i - 1;
@@ -515,7 +509,7 @@ void BinaryInsertionSortc(int* a, int n, long long &comparisons) {
     }
 }
 
-void Mergec(int* a, int low, int mid, int high, long long &comparisons) {
+inline void Mergec(int* a, int low, int mid, int high, long long &comparisons) {
     int i = low; 
     int j = mid + 1; 
     int k = 0; 
@@ -540,7 +534,7 @@ void Mergec(int* a, int low, int mid, int high, long long &comparisons) {
     delete[] temp;
 }
 
-void MergeSortc(int* a, int low, int high, long long &comparisons) {
+inline void MergeSortc(int* a, int low, int high, long long &comparisons) {
     if (++comparisons && low < high) {
         int mid = (low + high) / 2;
         MergeSortc(a, low, mid, comparisons);
@@ -549,7 +543,7 @@ void MergeSortc(int* a, int low, int high, long long &comparisons) {
     }
 }
 
-int Partitionc(int* a , int low , int high, long long &comparisons) {
+inline int Partitionc(int* a , int low , int high, long long &comparisons) {
     int pivot_value = a[high];
     int i = low - 1;
     int temp;
@@ -568,7 +562,7 @@ int Partitionc(int* a , int low , int high, long long &comparisons) {
     return i;
 }
 
-void QuickSort_recursionc (int* a , int low, int high, long long &comparisons) {
+inline void QuickSort_recursionc (int* a , int low, int high, long long &comparisons) {
     if (++comparisons && low < high){
     int pivot_index = Partitionc(a , low , high, comparisons);
     QuickSort_recursionc(a, low, pivot_index - 1, comparisons);
@@ -576,11 +570,11 @@ void QuickSort_recursionc (int* a , int low, int high, long long &comparisons) {
     }
 }
 
-void QuickSortc(int* a , int n, long long &comparisons) {
+inline void QuickSortc(int* a , int n, long long &comparisons) {
       QuickSort_recursionc(a , 0 , n - 1, comparisons);
 }
 
-void CountingSortc(int* a, int n, long long &comparisons) {
+inline void CountingSortc(int* a, int n, long long &comparisons) {
     int max = a[0];
     for (int i = 0; ++comparisons && i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
         if (++comparisons && a[i] > max)        
@@ -608,7 +602,7 @@ void CountingSortc(int* a, int n, long long &comparisons) {
     delete[] s;
 }
 
-void countSortc(int arr[], int n, int exp, long long &comparisons) {
+inline void countSortc(int arr[], int n, int exp, long long &comparisons) {
     int output[n];
     int i, count[10] = {0};
     for (i = 0; ++comparisons && i < n; i++)
@@ -625,7 +619,7 @@ void countSortc(int arr[], int n, int exp, long long &comparisons) {
     for (i = 0; ++comparisons && i < n; i++) arr[i] = output[i];
 }
 
-void RadixSortc(int* a, int n, long long &comparisons) {
+inline void RadixSortc(int* a, int n, long long &comparisons) {
     int max = a[0];
     for (int i = 1 ; ++comparisons && i < n ; i++) { //sane comment from counting sort also applies here
         if (++comparisons && a[i] > max)
