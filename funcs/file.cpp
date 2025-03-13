@@ -129,22 +129,27 @@ void sortwithcomp(const string& algorithm, int* a, int &n, long long &comparison
 void RunAlgorithm(const string& algorithm, int* a, int &n, bool measureTime, bool measureComp) {
     long long comparisons = 0;
     milliseconds time;
+	bool measureTime = false, measureComp = false;
 
-    if (measureTime) {
+    if (measureTime && !measureComp) {
         auto start = high_resolution_clock::now();
         sortonly(algorithm, a, n);
         auto end = high_resolution_clock::now();
         time = duration_cast<milliseconds>(end - start);
     }
-    if (measureComp) {
-        int* b = new int[n];
-        for (int i = 0; i < n; i++) b[i] = a[i];
+    if (measureComp && !measureTime) {
         sortwithcomp(algorithm, a, n, comparisons);
-        auto start = high_resolution_clock::now();
-        sortonly(algorithm, b, n);
-        auto end = high_resolution_clock::now();
-        time = duration_cast<milliseconds>(end - start);
-        delete[] b;
+    }
+    if (measureTime && measureComp) {
+	int* b = new int[n];
+	for (int i = 0; i < n; i++) b[i] = a[i];
+
+	sortwithcomp(algorithm, b, n, comparisons);
+	auto start = high_resolution_clock::now();
+	sortonly(algorithm, a, n);
+	auto end = high_resolution_clock::now();
+	time = duration_cast<milliseconds>(end - start);
+	delete[] b;
     }
     
     if (measureTime) cout << "Running time: " << time.count() << " ms" << endl;
