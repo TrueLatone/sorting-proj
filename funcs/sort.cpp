@@ -287,21 +287,21 @@ inline void CountingSort (int* a, int n) {
     delete[] s;
 }
 
-inline void CountSort(int arr[], int n, int exp) {
-    int output[n];
+inline void CountSort(int* a, int n, int exp) {
+    int* output = new int[n];
     int i, count[10] = {0};
     for (i = 0; i < n; i++)
-        count[(arr[i] / exp) % 10]++;
+        count[(a[i] / exp) % 10]++;
     for (i = 1; i < 10; i++)
         count[i] += count[i - 1];
 
     // Build the output array
     for (i = n - 1; i >= 0; i--) {
-        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-        count[(arr[i] / exp) % 10]--;
+        output[count[(a[i] / exp) % 10] - 1] = a[i];
+        count[(a[i] / exp) % 10]--;
     }
 
-    for (i = 0; i < n; i++) arr[i] = output[i];
+    for (i = 0; i < n; i++) a[i] = output[i];
 }
 
 inline void RadixSort(int* a, int n) {
@@ -602,21 +602,21 @@ inline void CountingSortc(int* a, int n, long long &comparisons) {
     delete[] s;
 }
 
-inline void CountSortc(int arr[], int n, int exp, long long &comparisons) {
-    int output[n];
+inline void CountSortc(int* a, int n, int exp, long long &comparisons) {
+    int* output = new int[n];
     int i, count[10] = {0};
     for (i = 0; ++comparisons && i < n; i++)
-        count[(arr[i] / exp) % 10]++;
+        count[(a[i] / exp) % 10]++;
     for (i = 1; ++comparisons && i < 10; i++)
         count[i] += count[i - 1];
 
     // Build the output array
     for (i = n - 1; ++comparisons && i >= 0; i--) {
-        output[count[(arr[i] / exp) % 10] - 1] = arr[i];
-        count[(arr[i] / exp) % 10]--;
+        output[count[(a[i] / exp) % 10] - 1] = a[i];
+        count[(a[i] / exp) % 10]--;
     }
 
-    for (i = 0; ++comparisons && i < n; i++) arr[i] = output[i];
+    for (i = 0; ++comparisons && i < n; i++) a[i] = output[i];
 }
 
 inline void RadixSortc(int* a, int n, long long &comparisons) {
