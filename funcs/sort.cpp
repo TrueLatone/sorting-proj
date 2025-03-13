@@ -185,7 +185,7 @@ inline void BinaryInsertionSort(int* a, int n) {
     for (int i = 1; i < n; i++) {
         int key = a[i];
         int j = i - 1;
-        int loc = binarySearch(a, key, 0, j);
+        int loc = BinarySearch(a, key, 0, j);
         while (j >= loc) {
             a[j + 1] = a[j];
             j--;
@@ -500,7 +500,7 @@ inline void BinaryInsertionSortc(int* a, int n, long long &comparisons) {
     for (int i = 1; ++comparisons && i < n; i++) {
         int key = a[i];
         int j = i - 1;
-        int loc = binarySearchc(a, key, 0, j, comparisons);
+        int loc = BinarySearchc(a, key, 0, j, comparisons);
         while (++comparisons && j >= loc) {
             a[j + 1] = a[j];
             j--;
