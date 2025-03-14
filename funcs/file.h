@@ -78,6 +78,6 @@ void RadixSortc(int* a, int n, long long &comparisons);
 int* ParseData(string filename, int& size);
 void RunAlgorithm(const string& algorithm, int* a, int &n, bool measureTime, bool measureComp);
 void CompareAlgorithm(const string& algo1, const string& algo2, int* a, int& n);
-// void print(bool measureTime, bool measureComp, long long comparisons, microseconds time);
+// void RunAlgorithmtest(const string& algorithm, int* a, int &n, long long &comp, milliseconds &tim);
 
 #endif

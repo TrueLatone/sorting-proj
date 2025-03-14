@@ -182,3 +182,21 @@ void CompareAlgorithm(const string& algo1, const string& algo2, int* a, int& n) 
     cout << "Comparisons: " << comp1 << " | " << comp2 << endl;
 }
 
+// void RunAlgorithmtest(const string& algorithm, int* a, int &n, long long &comp, milliseconds &tim) {
+//     long long comparisons = 0;
+//     milliseconds tim;
+
+// 	int* b = new int[n];
+//     int* c = new int[n];
+// 	for (int i = 0; i < n; i++) b[i] = a[i];
+//     for (int i = 0; i < n; i++) c[i] = a[i];
+
+// 	sortwithcomp(algorithm, b, n, comparisons);
+// 	auto start = high_resolution_clock::now();
+// 	sortonly(algorithm, c, n);
+// 	auto end = high_resolution_clock::now();
+// 	tim = duration_cast<milliseconds>(end - start);
+// 	delete[] b;
+//     delete[] c;
+// }
+

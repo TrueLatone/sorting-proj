@@ -222,5 +222,28 @@ int main(int argc, char* argv[]) {
     else {
         cout << "Invalid mode! Please use '-a' for algorithm mode or '-c' for compare mode"; 
     }
+
+    // // FOR TESTING PURPOSE
+    // // ====================================================================
+    // string testmode = argv[1];
+    // string al = argv[2];
+    // string ord = argv[3];
+    // long long comp;
+    // milliseconds tim;
+    // int siz = stoi(argv[4]);
+    // int *arr = new int[siz];
+
+    // int resT[100] = {}, resC[100] = {};
+    // for (int i = 0; i < 4; i++) {
+    //     GenerateData(arr, siz, i);
+    //     for (int j = 0; j < 100; j++) {
+    //         RunAlgorithmtest(al, arr, siz, comp, tim);
+    //         resT[j] = tim.count();
+    //         resC[j] = comp;
+    //     }
+    //     for (int i = 0; i < 100; i++) cout << resT[i] << " ";
+    //     for (int i = 0; i < 100; i++) cout << resC[i] << " ";
+    //     cout << endl;
+    // }
     return 0;
 }
