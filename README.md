@@ -2,7 +2,7 @@ FOR TESTING PURPOSE
 ======================================================================
 1. Head to folder "FOR_TESTING" in this main repo
 2. Open the folder in cmd
-3. Test command: test.exe -t [SIZE]
+3. Test command: test.exe -t
 
 
 P/S: MUST FOLLOW THE FOLLOWING COMMAND TO WORK
