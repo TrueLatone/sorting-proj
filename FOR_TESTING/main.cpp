@@ -1,5 +1,6 @@
 #include "funcs/file.h"
 #include <vector>
+#include <stdio.h>
 
 long long average(int *a, int n)
 {
@@ -303,8 +304,8 @@ int main(int argc, char *argv[])
                 fo << "Order: " << orders[i] << endl;
                 for (int k = 0; k < 12; k++)
                 { // Each algorithm
-                    resT[10] = {};
-                    resC[10] = {};
+                    memset(resT, 0, sizeof(resT));
+                    memset(resC, 0, sizeof(resC));
                     for (int j = 0; j < 10; j++)
                     { // 10 tests for each algorithm
                         GenerateData(arr.data(), SIZE, i);
