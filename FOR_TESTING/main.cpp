@@ -227,34 +227,43 @@ int main(int argc, char* argv[]) {
             CompareAlgorithm(algo1, algo2, a, size);
         }
     }
-    else {
-        cout << "Invalid mode! Please use '-a' for algorithm mode or '-c' for compare mode"; 
-    }
+    // else {
+    //     cout << "Invalid mode! Please use '-a' for algorithm mode or '-c' for compare mode"; 
+    // }
 
     // FOR TESTING PURPOSE
     // ====================================================================
+
     string testmode = argv[1];
-    string al = argv[2];
+    // string al = argv[2];
     if (testmode == "-t") {
         long long comp;
         milliseconds tim;
-        int siz = stoi(argv[3]);
+        int siz = stoi(argv[2]);
         vector<int> arr(siz);
 
-        int resT[100] = {}, resC[100] = {};
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 100; j++) {
-                GenerateData(arr.data(), siz, i);
-                RunAlgorithmtest(al, arr.data(), siz, comp, tim);
-                resT[j] = tim.count();
-                resC[j] = comp;
-            }
-            for (int i = 0; i < 100; i++) cout << resT[i] << " ";
-            for (int i = 0; i < 100; i++) cout << resC[i] << " ";
+        int resT[10] = {}, resC[10] = {};
+        for (int i = 0; i < 4; i++) { // 4 data types
+            cout << "Order: " << orders[i] << endl;
+            for (int k = 0; k < 12; k++) { // Each algorithm
+                resT[10] = {}; resC[10] = {};
+                for (int j = 0; j < 10; j++) { // 10 tests for each algorithm
+                    GenerateData(arr.data(), siz, i);
+                    RunAlgorithmtest(algorithms[k], arr.data(), siz, comp, tim);
+                    resT[j] = tim.count();
+                    resC[j] = comp;
+                }
+            // Enable to show results
+            // for (int i = 0; i < 100; i++) cout << resT[i] << " ";
+            // for (int i = 0; i < 100; i++) cout << resC[i] << " ";
             cout << endl;
-            cout << "Average Time: " << average(resT, 100) << endl;
-            cout << "Average Comparisons " << average(resC, 100) << endl;
+            cout << "Algorithm: " << algorithms[k] << endl;
+            cout << "Average Time: " << average(resT, 10) << endl;
+            cout << "Average Comparisons " << average(resC, 10) << endl;
             cout << "===============================================" << endl;
+            }
+            cout << "+++++++++++++++++++++++++++++++++++++++" << endl;
+            cout << "+++++++++++++++++++++++++++++++++++++++" << endl;
         }
     }
     return 0;
