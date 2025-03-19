@@ -128,7 +128,7 @@ void sortwithcomp(const string& algorithm, int* a, int &n, long long &comparison
 
 void RunAlgorithm(const string& algorithm, int* a, int &n, bool measureTime, bool measureComp) {
     long long comparisons = 0;
-    milliseconds time;
+    milliseconds time(0);
 
     if (measureTime && !measureComp) {
         auto start = high_resolution_clock::now();

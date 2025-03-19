@@ -8,6 +8,7 @@
 #include <time.h>
 #include <cmath>
 #include <chrono>
+#include <vector>
 
 using namespace std;
 using namespace chrono;

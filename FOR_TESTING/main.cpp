@@ -1,14 +1,20 @@
 #include "funcs/file.h"
 #include <vector>
-#include <stdio.h>
 
-long long average(int *a, int n)
+double averageT(vector<long long> a, int n)
+{
+    double res = 0;
+    for (int i = 0; i < n; i++)
+        res += (long long)a[i];
+    return (double)res / n;
+}
+
+long long averageC(vector<long long> a, int n)
 {
     long long res = 0;
     for (int i = 0; i < n; i++)
-        res += a[i];
-    res /= n;
-    return res;
+        res += (long long)a[i];
+    return (long long)res / n;
 }
 
 int main(int argc, char *argv[])
@@ -285,6 +291,7 @@ int main(int argc, char *argv[])
 
     // FOR TESTING PURPOSE
     // ====================================================================
+    const string algorithmsDB[11] = {"selection-sort", "insertion-sort", "shell-sort", "bubble-sort", "heap-sort", "merge-sort", "radix-sort", "counting-sort", "binary-insertion-sort", "shaker-sort", "flash-sort"};
     const int siz[6] = {10000, 30000, 50000, 100000, 300000, 500000};
     string testmode = argv[1];
     // string al = argv[2];
@@ -295,21 +302,21 @@ int main(int argc, char *argv[])
         // int siz = stoi(argv[2]);
         // vector<int> arr(siz);
 
-        int resT[10] = {}, resC[10] = {};
+        vector<long long> resT(10, 0), resC(10, 0);
         for (int sz = 0; sz < 6; sz++) { // 6 size
             int SIZE = siz[sz];
             fo << "SIZE: " << SIZE << endl;
             vector<int> arr(SIZE);
             for (int i = 0; i < 4; i++) { // 4 data types
                 fo << "Order: " << orders[i] << endl;
-                for (int k = 0; k < 12; k++)
+                for (int k = 0; k < 11; k++)
                 { // Each algorithm
-                    memset(resT, 0, sizeof(resT));
-                    memset(resC, 0, sizeof(resC));
+                    resT.assign(10, 0);
+                    resC.assign(10, 0);
                     for (int j = 0; j < 10; j++)
                     { // 10 tests for each algorithm
                         GenerateData(arr.data(), SIZE, i);
-                        RunAlgorithmtest(algorithms[k], arr.data(), SIZE, comp, tim);
+                        RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim);
                         resT[j] = tim.count();
                         resC[j] = comp;
                     }
@@ -318,8 +325,8 @@ int main(int argc, char *argv[])
                     // for (int i = 0; i < 100; i++) fo << resC[i] << " ";
                     fo << endl;
                     fo << "Algorithm: " << algorithms[k] << endl;
-                    fo << "Average Time: " << average(resT, 10) << endl;
-                    fo << "Average Comparisons " << average(resC, 10) << endl;
+                    fo << "Average Time: " << averageT(resT, 10) << endl;
+                    fo << "Average Comparisons " << averageC(resC, 10) << endl;
                     fo << "===============================================" << endl;
                 }
                 fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
