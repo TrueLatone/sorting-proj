@@ -620,11 +620,7 @@ inline void RadixSortc(int* a, int n, long long &comparisons) {
         if (++comparisons && a[i] > max)
             max = a[i];
     }
-    int m = 0;
-    while (++comparisons && max > 0){
-        m++;
-        max /= 10;
-    }
+    
 
-    for (int exp = 1; ++comparisons && m / exp > 0; exp *= 10) CountSortc(a, n, exp, comparisons);
+    for (int exp = 1; ++comparisons && max / exp > 0; exp *= 10) CountSortc(a, n, exp, comparisons);
 }
