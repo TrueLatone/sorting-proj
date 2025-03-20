@@ -2,7 +2,14 @@ FOR TESTING PURPOSE
 ======================================================================
 1. Head to folder "FOR_TESTING" in this main repo
 2. Open the folder in cmd
-3. Test command: test.exe -t
+3. Updated test command:
+   + To run ALL algorithms in ALL sizes and orders: test.exe -t
+   + To run desired algorithm but in ALL sizes and orders: test.exe -t [YOUR ALGORITHM]
+   + To run desired algorithm in custom size in all orders: test.exe -t [YOUR ALGORITHM] [SIZE]
+  
+**Second and Third command prints results directly on terminal**
+
+**The first one exports results into 6 files corresponding to 6 different sizes**
 
 
 P/S: MUST FOLLOW THE FOLLOWING COMMAND TO WORK
