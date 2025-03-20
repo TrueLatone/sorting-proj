@@ -261,7 +261,7 @@ inline void QuickSort (int* a , int n) {
 
 inline void CountingSort (int* a, int n) {
     int max = a[0];
-    for (int i = 11; i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
+    for (int i = 1; i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
         if (a[i] > max)        
         max = a[i];
     }
