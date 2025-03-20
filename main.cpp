@@ -192,7 +192,7 @@ int main(int argc, char* argv[]) {
                 order = orders[3];
                 for (int i = 0; i < size; i++) fi << a[i] << " ";
             }
-            else {
+            else { //Invalid input order
                 cout << "Invalid order. Please use '-order' or '-nsorted' or '-sorted' or 'rev'" << endl;
                 return 1;
             }
