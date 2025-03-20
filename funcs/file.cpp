@@ -8,9 +8,6 @@ void HoanVi(T &a, T &b)
 	b = x;
 }
 
-//-------------------------------------------------
-
-// Hàm phát sinh mảng dữ liệu ngẫu nhiên
 void GenerateRandomData(int a[], int n)
 {
 	srand((unsigned int)time(NULL));
@@ -21,7 +18,6 @@ void GenerateRandomData(int a[], int n)
 	}
 }
 
-// Hàm phát sinh mảng dữ liệu có thứ tự tăng dần
 void GenerateSortedData(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
@@ -30,7 +26,6 @@ void GenerateSortedData(int a[], int n)
 	}
 }
 
-// Hàm phát sinh mảng dữ liệu có thứ tự ngược (giảm dần)
 void GenerateReverseData(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
@@ -39,7 +34,6 @@ void GenerateReverseData(int a[], int n)
 	}
 }
 
-// Hàm phát sinh mảng dữ liệu gần như có thứ tự
 void GenerateNearlySortedData(int a[], int n)
 {
 	for (int i = 0; i < n; i++)
@@ -59,16 +53,16 @@ void GenerateData(int a[], int n, int dataType)
 {
 	switch (dataType)
 	{
-	case 0:	// ngẫu nhiên
+	case 0:	// Randomized data
 		GenerateRandomData(a, n);
 		break;
-	case 1:	// có thứ tự
+	case 1:	// Nearly Sorted data
 		GenerateNearlySortedData(a, n);
 		break;
-	case 2:	// có thứ tự ngược
+	case 2:	// Sorted data
 		GenerateSortedData(a, n);
 		break;
-	case 3:	// gần như có thứ tự
+	case 3:	// Reversed sorted data
 		GenerateReverseData(a, n);
 		break;
 	default:
@@ -93,8 +87,6 @@ int* ParseData(string filename, int &size) {
     fi.close();
     return a;
 }
-
-// const string algorithms[12] = {"selection-sort", "insertion-sort", "shell-sort", "bubble-sort", "heap-sort", "merge-sort", "quick-sort", "radix-sort", "counting-sort", "binary-insertion-sort", "shaker-sort", "flash-sort"};
 
 void sortonly(const string& algorithm, int* a, int &n) {
     if (algorithm == "selection-sort") SelectionSort(a, n);
@@ -186,22 +178,4 @@ void CompareAlgorithm(const string& algo1, const string& algo2, int* a, int& n) 
     cout << "Running time: " << time1.count() << " | " << time2.count() << endl;
     cout << "Comparisons: " << comp1 << " | " << comp2 << endl;
 }
-
-// void RunAlgorithmtest(const string& algorithm, int* a, int &n, long long &comp, milliseconds &tim) {
-//     long long comparisons = 0;
-//     milliseconds tim;
-
-// 	int* b = new int[n];
-//     int* c = new int[n];
-// 	for (int i = 0; i < n; i++) b[i] = a[i];
-//     for (int i = 0; i < n; i++) c[i] = a[i];
-
-// 	sortwithcomp(algorithm, b, n, comparisons);
-// 	auto start = high_resolution_clock::now();
-// 	sortonly(algorithm, c, n);
-// 	auto end = high_resolution_clock::now();
-// 	tim = duration_cast<milliseconds>(end - start);
-// 	delete[] b;
-//     delete[] c;
-// }
 
