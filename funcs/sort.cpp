@@ -310,13 +310,8 @@ inline void RadixSort(int* a, int n) {
         if (a[i] > max)
             max = a[i];
     }
-    int m = 0;
-    while (max > 0){
-        m++;
-        max /= 10;
-    }
 
-    for (int exp = 1; m / exp > 0; exp *= 10) CountSort(a, n, exp);
+    for (int exp = 1; max / exp > 0; exp *= 10) CountSort(a, n, exp);
 }
 
 // FOR COUNTING COMPARISONS
