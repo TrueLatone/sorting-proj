@@ -14,7 +14,7 @@ FOR TESTING PURPOSE
 
 P/S: MUST FOLLOW THE FOLLOWING COMMAND TO WORK
 
-**IF THERE IS ANY PROBLEM WITH "test.exe" PLEASE RE-COMPILE IT WITH FOLLOWING COMMAND: *g++ "-Wl,--stack,36777216" main.cpp funcs/*.cpp -o test.exe***
+**IF THERE IS ANY PROBLEM WITH "test.exe" PLEASE RE-COMPILE IT WITH FOLLOWING COMMAND: *"g++ "-Wl,--stack,36777216" main.cpp funcs/*.cpp -o test.exe"***
 
 ALL AVAILABLE SORTING AL:
 "selection-sort", "insertion-sort", "shell-sort", "bubble-sort", "heap-sort", "merge-sort", "quick-sort", "radix-sort", "counting-sort", "binary-insertion-sort", "shaker-sort", "flash-sort"
