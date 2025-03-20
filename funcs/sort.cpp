@@ -265,11 +265,8 @@ inline void CountingSort (int* a, int n) {
         if (a[i] > max)        
         max = a[i];
     }
-    int* b = new int [max + 1];
+    int* b = new int [max + 1]();
     int* s = new int[n];
-    for (int i = 0 ; i <= max ; i++) {
-        b[i] = 0;
-    }
     for (int i = 0 ; i < n ; i++) {
         b[a[i]]++;
     }
@@ -575,11 +572,8 @@ inline void CountingSortc(int* a, int n, long long &comparisons) {
         if (++comparisons && a[i] > max)        
         max = a[i];
     }
-    int* b = new int [max + 1];
+    int* b = new int [max + 1]();
     int* s = new int[n];
-    for (int i = 0 ; ++comparisons && i <= max ; i++) {
-        b[i] = 0;
-    }
     for (int i = 0 ; ++comparisons && i < n ; i++) {
         b[a[i]]++;
     }
