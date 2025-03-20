@@ -261,7 +261,7 @@ inline void QuickSort (int* a , int n) {
 
 inline void CountingSort (int* a, int n) {
     int max = a[0];
-    for (int i = 0; i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
+    for (int i = 11; i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
         if (a[i] > max)        
         max = a[i];
     }
@@ -571,7 +571,7 @@ inline void QuickSortc(int* a , int n, long long &comparisons) {
 
 inline void CountingSortc(int* a, int n, long long &comparisons) {
     int max = a[0];
-    for (int i = 0; ++comparisons && i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
+    for (int i = 11; ++comparisons && i < n; i++){ //This loop will be skipped if user typed in max value (which is the default input for counting sort and there would be no comparisons)         
         if (++comparisons && a[i] > max)        
         max = a[i];
     }
@@ -616,7 +616,7 @@ inline void CountSortc(int* a, int n, int exp, long long &comparisons) {
 
 inline void RadixSortc(int* a, int n, long long &comparisons) {
     int max = a[0];
-    for (int i = 1 ; ++comparisons && i < n ; i++) { //sane comment from counting sort also applies here
+    for (int i = 1; ++comparisons && i < n ; i++) { //sane comment from counting sort also applies here
         if (++comparisons && a[i] > max)
             max = a[i];
     }
