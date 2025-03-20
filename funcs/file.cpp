@@ -85,11 +85,11 @@ int* ParseData(string filename, int &size) {
         size = 0;
         return NULL;
     }
-    fi >> size;
+    fi >> size; 
     fi.ignore();
     int num, index = 0;
     int* a = new int[size];
-    while (fi >> num) a[index++] = num;
+    while (fi >> num) a[index++] = num; 
     fi.close();
     return a;
 }
@@ -130,27 +130,29 @@ void RunAlgorithm(const string& algorithm, int* a, int &n, bool measureTime, boo
     long long comparisons = 0;
     milliseconds time;
 
-    if (measureTime && !measureComp) {
-        auto start = high_resolution_clock::now();
-        sortonly(algorithm, a, n);
-        auto end = high_resolution_clock::now();
-        time = duration_cast<milliseconds>(end - start);
+    if (measureTime && !measureComp) { //Output parameter: -time
+        auto start = high_resolution_clock::now(); //Starting time for sort
+        sortonly(algorithm, a, n); //Only sorting (doesnt pass comparison argument)
+        auto end = high_resolution_clock::now(); //Ending time for sort
+        time = duration_cast<milliseconds>(end - start); 
     }
-    if (measureComp && !measureTime) {
-        sortwithcomp(algorithm, a, n, comparisons);
+    if (measureComp && !measureTime) { //Output parameter: -comp
+        sortwithcomp(algorithm, a, n, comparisons); //Sorting with comparison argument
     }
-    if (measureTime && measureComp) {
+    if (measureTime && measureComp) { //Output parameter: -both
 	int* b = new int[n];
 	for (int i = 0; i < n; i++) b[i] = a[i];
 
-	sortwithcomp(algorithm, b, n, comparisons);
+	sortwithcomp(algorithm, b, n, comparisons); 
+
 	auto start = high_resolution_clock::now();
 	sortonly(algorithm, a, n);
 	auto end = high_resolution_clock::now();
 	time = duration_cast<milliseconds>(end - start);
+
 	delete[] b;
     }
-    
+    //Outputting results
     if (measureTime) cout << "Running time: " << time.count() << " ms" << endl;
     if (measureComp) cout << "Comparisons: " << comparisons << " times" << endl;
     else if (!measureTime && !measureComp) cout << "Parameters might be incorrect. Please check README.txt!" << endl;
@@ -162,22 +164,25 @@ void CompareAlgorithm(const string& algo1, const string& algo2, int* a, int& n) 
     for (int i = 0; i < n; i++) copy1[i] = a[i];
     for (int i = 0; i < n; i++) copy2[i] = a[i];
     for (int i = 0; i < n; i++) temp[i] = a[i];
-
+    //Algorithm 1
     sortwithcomp(algo1, copy1, n, comp1);
+
     auto start1 = high_resolution_clock::now();
     sortonly(algo1, a, n);
     auto end1 = high_resolution_clock::now();
     milliseconds time1 = duration_cast<milliseconds> (end1 - start1);
     delete[] copy1;
-
+    //Algorithm 2
     sortwithcomp(algo2, copy2, n, comp2);
+
     auto start2 = high_resolution_clock::now();
     sortonly(algo2, temp, n);
     auto end2 = high_resolution_clock::now();
     milliseconds time2 = duration_cast<milliseconds> (end2 - start2);
+
     delete[] copy2;
     delete[] temp;
-
+    //Outputting results
     cout << "Running time: " << time1.count() << " | " << time2.count() << endl;
     cout << "Comparisons: " << comp1 << " | " << comp2 << endl;
 }
