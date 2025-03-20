@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
                     fi << size << endl; //Putting array size in input file
                     for (int i = 0; i < size; i++) fi << a[i] << " ";  //Putting generated data in input file
                     fi.close();
-                    RunAlgorithm(algorithm, a, size, measureTime, measureComp); //Sorting generated array with an algorithm
+                    RunAlgorithm(algorithm, a, size, measureTime, measureComp); //Sorting generated array with an algorithm then output sorting results
                     cout << endl;
                 }
             }
@@ -98,7 +98,7 @@ int main(int argc, char* argv[]) {
                 cout << "Input size: " << size << endl;
                 cout << "Input order: " << order << endl;
                 cout << "--------------------------------" << endl;
-                RunAlgorithm(algorithm, a, size, measureTime, measureComp); //Sorting generated array with an algorithm
+                RunAlgorithm(algorithm, a, size, measureTime, measureComp); //Sorting generated array with an algorithm then output sorting results
 
                 ofstream fo("output.txt"); //Opening output file
                 if (!fo.is_open()) {
@@ -129,7 +129,7 @@ int main(int argc, char* argv[]) {
             cout << "Input file: " << filename << endl;
             cout << "Input size: " << size << endl;
             cout << "--------------------------------" << endl;
-            RunAlgorithm(algorithm, a, size, measureTime, measureComp); //Sorting array with an algorithm
+            RunAlgorithm(algorithm, a, size, measureTime, measureComp); //Sorting array with an algorithm then output sorting results
 
             ofstream fo("output.txt"); //Opening output file
             if (!fo.is_open()) {
@@ -202,7 +202,7 @@ int main(int argc, char* argv[]) {
             cout << "Input order: " << order << endl;
             cout << "--------------------------------" << endl;
 
-            CompareAlgorithm(algo1, algo2, a, size); //Output comparison result
+            CompareAlgorithm(algo1, algo2, a, size); //Sorting array with two algorithms then output comparison result
         }
         else { //Manual input 
             string filename = argv[4]; //Argument 5: [Given input(file)]
@@ -216,7 +216,7 @@ int main(int argc, char* argv[]) {
             cout << "Input file: " << filename << endl;
             cout << "Input size: " << size << endl;
             cout << "--------------------------------" << endl;
-            CompareAlgorithm(algo1, algo2, a, size); //Output comparison result
+            CompareAlgorithm(algo1, algo2, a, size); //Sorting array with two algorithms then output comparison result
         }
     }
     else { //Invalid mode
