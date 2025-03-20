@@ -229,7 +229,7 @@ inline void MergeSort(int* a, int low, int high) {
 }
 
 inline int Partition (int* a , int low , int high) {
-    int pivot_value = a[high];
+    int pivot_value = a[high]; //Last element as pivot
     int i = low - 1;
     int temp;
     for (int j = low ; j < high ; j++){
@@ -544,7 +544,7 @@ inline void MergeSortc(int* a, int low, int high, long long &comparisons) {
 }
 
 inline int Partitionc(int* a , int low , int high, long long &comparisons) {
-    int pivot_value = a[high];
+    int pivot_value = a[high]; //Last element as pivot
     int i = low - 1;
     int temp;
     for (int j = low ; ++comparisons && j < high ; j++){
