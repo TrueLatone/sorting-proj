@@ -303,7 +303,7 @@ inline void CountSort(int* a, int n, int exp) {
 
 inline void RadixSort(int* a, int n) {
     int max = a[0];
-    for (int i = 1 ; i < n ; i++) { //sane comment from counting sort also applies here
+    for (int i = 1 ; i < n ; i++) { //same comment from counting sort also applies here
         if (a[i] > max)
             max = a[i];
     }
@@ -478,7 +478,7 @@ inline int BinarySearchc(int* a, int k, int low, int high, long long &comparison
 
     int mid = low + (high - low) / 2; 
 
-    if (++ comparisons && k == a[mid]) {
+    if (++comparisons && k == a[mid]) {
         return mid + 1; 
     }
 
