@@ -295,86 +295,122 @@ int main(int argc, char *argv[])
     const int siz[6] = {10000, 30000, 50000, 100000, 300000, 500000};
     string testmode = argv[1];
     if (testmode == "-t") {
+
         long long comp;
         milliseconds tim(0);
-        // int siz = stoi(argv[2]);
-        // vector<int> arr(siz);
-
+        bool issorted = false;
         vector<long long> resT(10, 0), resC(10, 0);
+
         if (argc > 2) {
-            if (argc == 3) { // TO RUN ALL BUT SELECTED ALGORITHM
-                string al = argv[2];
-                for (int i = 0; i < 6; i++) {
-                    int SIZE = siz[i];
-                    cout << "Current size: " << SIZE << endl;
-                    vector<int> arr(SIZE);
-                    for (int j = 0; j < 4; j++) {
-                        cout << "Order: " << orders[j] << endl << endl;
-                        for (int k = 0; k < 10; k++) {
+            int SIZE = stoi(argv[2]);
+            vector<int> arr(SIZE);
+            ofstream fo("results_" + to_string(SIZE) + ".txt");
+            for (int i = 0; i < 4; i++)
+            { // 4 data types
+                fo << "Order: " << orders[i] << endl;
+                if (i == 0 || i == 1)
+                {
+                    for (int k = 0; k < 12; k++)
+                    { // Each algorithm
+                        resT.assign(10, 0);
+                        resC.assign(10, 0);
+                        for (int j = 0; j < 10; j++)
+                        { // 10 tests for each algorithm
                             GenerateData(arr.data(), SIZE, i);
-                            RunAlgorithmtest(al, arr.data(), SIZE, comp, tim);
+                            RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim, issorted);
                             resT[j] = tim.count();
                             resC[j] = comp;
                         }
-                        cout << "Average Time: " << averageT(resT, 10) << endl;
-                        cout << "Average Comparisons " << averageC(resC, 10) << endl;
-                        cout << "===============================================" << endl;
+                        // Enable to show results
+                        // for (int i = 0; i < 100; i++) fo << resT[i] << " ";
+                        // for (int i = 0; i < 100; i++) fo << resC[i] << " ";
+                        fo << endl;
+                        fo << "Algorithm: " << algorithmsDB[k] << endl;
+                        fo << "Average Time: " << averageT(resT, 10) << endl;
+                        fo << "Average Comparisons " << averageC(resC, 10) << endl;
+                        fo << "===============================================" << endl;
                     }
-                    cout << "-------------------------------------------" << endl;
                 }
-                return 1;
-            }
-            if (argc == 4) {
-                string al = argv[2];
-                int SIZE = stoi(argv[3]);
-                vector<int> arr(SIZE);
-                for (int i = 0; i < 4; i++) {
-                    cout << "Order:" << orders[i] << endl;
-                    for (int j = 0; j < 10; j++) {
+                else if (i == 2 || i == 3)
+                {
+                    issorted = true;
+                    for (int k = 0; k < 12; k++)
+                    { // Each algorithm
+                        resT.assign(10, 0);
                         GenerateData(arr.data(), SIZE, i);
-                        RunAlgorithmtest(al, arr.data(), SIZE, comp, tim);
-                        resT[j] = tim.count();
-                        resC[j] = comp;
+                        for (int j = 0; j < 10; j++) {
+                            RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim, issorted);
+                            resT[j] = tim.count();
+                        }
+                        fo << endl;
+                        fo << "Algorithm: " << algorithmsDB[k] << endl;
+                        fo << "Average Time: " << averageT(resT, 10) << endl;
+                        sortwithcomp(algorithmsDB[k], arr.data(), SIZE, comp);
+                        fo << "Comparisons: " << comp << endl;
+                        fo << "==============================================";
                     }
-                    cout << "Average Time: " << averageT(resT, 10) << endl;
-                    cout << "Average Comparisons " << averageC(resC, 10) << endl;
-                    cout << "===============================================" << endl;
+                    fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
+                    fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
                 }
-                return 1;
             }
+            return 1;
         }
 
-
         // TO RUN ALL IN ONE "-t"
-        for (int sz = 0; sz < 6; sz++) { // 6 size
+        
+        for (int sz = 0; sz < 6; sz++)
+        { // 6 size
             int SIZE = siz[sz];
             ofstream fo("size_" + to_string(SIZE) + ".txt");
             fo << "SIZE: " << SIZE << endl;
             vector<int> arr(SIZE);
-            for (int i = 0; i < 4; i++) { // 4 data types
+            for (int i = 0; i < 4; i++)
+            { // 4 data types
                 fo << "Order: " << orders[i] << endl;
-                for (int k = 0; k < 12; k++)
-                { // Each algorithm
-                    resT.assign(10, 0);
-                    resC.assign(10, 0);
-                    for (int j = 0; j < 10; j++)
-                    { // 10 tests for each algorithm
-                        GenerateData(arr.data(), SIZE, i);
-                        RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim);
-                        resT[j] = tim.count();
-                        resC[j] = comp;
+                if (i == 0 || i == 1)
+                {
+                    for (int k = 0; k < 12; k++)
+                    { // Each algorithm
+                        resT.assign(10, 0);
+                        resC.assign(10, 0);
+                        for (int j = 0; j < 10; j++)
+                        { // 10 tests for each algorithm
+                            GenerateData(arr.data(), SIZE, i);
+                            RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim, issorted);
+                            resT[j] = tim.count();
+                            resC[j] = comp;
+                        }
+                        // Enable to show results
+                        // for (int i = 0; i < 100; i++) fo << resT[i] << " ";
+                        // for (int i = 0; i < 100; i++) fo << resC[i] << " ";
+                        fo << endl;
+                        fo << "Algorithm: " << algorithmsDB[k] << endl;
+                        fo << "Average Time: " << averageT(resT, 10) << endl;
+                        fo << "Average Comparisons " << averageC(resC, 10) << endl;
+                        fo << "===============================================" << endl;
                     }
-                    // Enable to show results
-                    // for (int i = 0; i < 100; i++) fo << resT[i] << " ";
-                    // for (int i = 0; i < 100; i++) fo << resC[i] << " ";
-                    fo << endl;
-                    fo << "Algorithm: " << algorithmsDB[k] << endl;
-                    fo << "Average Time: " << averageT(resT, 10) << endl;
-                    fo << "Average Comparisons " << averageC(resC, 10) << endl;
-                    fo << "===============================================" << endl;
                 }
-                fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
-                fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
+                else if (i == 2 || i == 3)
+                {
+                    issorted = true;
+                    for (int k = 0; k < 12; k++)
+                    { // Each algorithm
+                        resT.assign(10, 0);
+                        GenerateData(arr.data(), SIZE, i);
+                        for (int j = 0; j < 10; j++) {
+                            RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim, issorted);
+                            resT[j] = tim.count();
+                        }
+                        fo << endl;
+                        fo << "Algorithm: " << algorithmsDB[k] << endl;
+                        fo << "Average Time: " << averageT(resT, 10) << endl;
+                        sortwithcomp(algorithmsDB[k], arr.data(), SIZE, comp);
+                        fo << "Comparisons: " << comp << endl;
+                        fo << "==============================================";
+                    }
+                    fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
+                    fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
+                }
             }
             fo << "---------------------------------------------" << endl;
             fo << "---------------------------------------------" << endl;

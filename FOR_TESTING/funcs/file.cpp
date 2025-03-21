@@ -182,7 +182,25 @@ void CompareAlgorithm(const string& algo1, const string& algo2, int* a, int& n) 
     cout << "Comparisons: " << comp1 << " | " << comp2 << endl;
 }
 
-void RunAlgorithmtest(const string& algorithm, int* a, int &n, long long &comp, milliseconds &tim) {
+// void RunAlgorithmtest(const string& algorithm, int* a, int &n, long long &comp, milliseconds &tim) {
+//     comp = 0;
+//     tim = milliseconds::zero();
+
+// 	int* b = new int[n];
+//     int* c = new int[n];
+// 	for (int i = 0; i < n; i++) b[i] = a[i];
+//     for (int i = 0; i < n; i++) c[i] = a[i];
+
+// 	sortwithcomp(algorithm, b, n, comp);
+// 	auto start = high_resolution_clock::now();
+// 	sortonly(algorithm, c, n);
+// 	auto end = high_resolution_clock::now();
+// 	tim = duration_cast<milliseconds>(end - start);
+// 	delete[] b;
+//     delete[] c;
+// }
+
+void RunAlgorithmtest(const string& algorithm, int* a, int &n, long long &comp, milliseconds &tim, bool issorted) {
     comp = 0;
     tim = milliseconds::zero();
 
@@ -190,12 +208,19 @@ void RunAlgorithmtest(const string& algorithm, int* a, int &n, long long &comp, 
     int* c = new int[n];
 	for (int i = 0; i < n; i++) b[i] = a[i];
     for (int i = 0; i < n; i++) c[i] = a[i];
-
-	sortwithcomp(algorithm, b, n, comp);
-	auto start = high_resolution_clock::now();
-	sortonly(algorithm, c, n);
-	auto end = high_resolution_clock::now();
-	tim = duration_cast<milliseconds>(end - start);
+    if (!issorted) {
+	    sortwithcomp(algorithm, b, n, comp);
+        auto start = high_resolution_clock::now();
+        sortonly(algorithm, c, n);
+        auto end = high_resolution_clock::now();
+        tim = duration_cast<milliseconds>(end - start);
+    }
+    else {
+        auto start = high_resolution_clock::now();
+        sortonly(algorithm, c, n);
+        auto end = high_resolution_clock::now();
+        tim = duration_cast<milliseconds>(end - start);
+    }
 	delete[] b;
     delete[] c;
 }
