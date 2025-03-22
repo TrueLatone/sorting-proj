@@ -1,0 +1,224 @@
+Order: Randomize
+
+Algorithm: selection-sort
+Average Time: 1036.2
+Average Comparisons 2500049999
+===============================================
+
+Algorithm: insertion-sort
+Average Time: 645.2
+Average Comparisons 1248950934
+===============================================
+
+Algorithm: bubble-sort
+Average Time: 6534.4
+Average Comparisons 2500049999
+===============================================
+
+Algorithm: heap-sort
+Average Time: 10
+Average Comparisons 3773464
+===============================================
+
+Algorithm: merge-sort
+Average Time: 10.1
+Average Comparisons 3333211
+===============================================
+
+Algorithm: quick-sort
+Average Time: 6.2
+Average Comparisons 2018318
+===============================================
+
+Algorithm: counting-sort
+Average Time: 0.2
+Average Comparisons 282770
+===============================================
+
+Algorithm: radix-sort
+Average Time: 3
+Average Comparisons 850070
+===============================================
+
+Algorithm: flash-sort
+Average Time: 1.7
+Average Comparisons 470135
+===============================================
+
+Algorithm: shaker-sort
+Average Time: 5060.3
+Average Comparisons 1876408885
+===============================================
+
+Algorithm: shell-sort
+Average Time: 11.2
+Average Comparisons 4311763
+===============================================
+
+Algorithm: binary-insertion-sort
+Average Time: 1066
+Average Comparisons 627677295
+===============================================
+Order: Nearly Sorted
+
+Algorithm: selection-sort
+Average Time: 1822.7
+Average Comparisons 2500049999
+===============================================
+
+Algorithm: insertion-sort
+Average Time: 0
+Average Comparisons 630898
+===============================================
+
+Algorithm: bubble-sort
+Average Time: 1968.1
+Average Comparisons 2500049999
+===============================================
+
+Algorithm: heap-sort
+Average Time: 7.6
+Average Comparisons 3925197
+===============================================
+
+Algorithm: merge-sort
+Average Time: 4.6
+Average Comparisons 2773726
+===============================================
+
+Algorithm: quick-sort
+Average Time: 2447
+Average Comparisons 1725429769
+===============================================
+
+Algorithm: counting-sort
+Average Time: 0
+Average Comparisons 300002
+===============================================
+
+Algorithm: radix-sort
+Average Time: 3
+Average Comparisons 850070
+===============================================
+
+Algorithm: flash-sort
+Average Time: 0.6
+Average Comparisons 639964
+===============================================
+
+Algorithm: shaker-sort
+Average Time: 1.6
+Average Comparisons 1899668
+===============================================
+
+Algorithm: shell-sort
+Average Time: 1.7
+Average Comparisons 2332118
+===============================================
+
+Algorithm: binary-insertion-sort
+Average Time: 2.4
+Average Comparisons 2561148
+===============================================
+Order: Sorted
+
+Algorithm: selection-sort
+Average Time: 1770.4
+Comparisons: 2500049999
+==============================================
+Algorithm: insertion-sort
+Average Time: 0
+Comparisons: 149998
+==============================================
+Algorithm: bubble-sort
+Average Time: 1862.5
+Comparisons: 2500049999
+==============================================
+Algorithm: heap-sort
+Average Time: 6.7
+Comparisons: 3925351
+==============================================
+Algorithm: merge-sort
+Average Time: 3.7
+Comparisons: 2672827
+==============================================
+Algorithm: quick-sort
+Average Time: 3768.3
+Comparisons: 2500099998
+==============================================
+Algorithm: counting-sort
+Average Time: 0
+Comparisons: 300002
+==============================================
+Algorithm: radix-sort
+Average Time: 3.5
+Comparisons: 850070
+==============================================
+Algorithm: flash-sort
+Average Time: 1
+Comparisons: 639992
+==============================================
+Algorithm: shaker-sort
+Average Time: 0
+Comparisons: 100001
+==============================================
+Algorithm: shell-sort
+Average Time: 1.5
+Comparisons: 2100049
+==============================================
+Algorithm: binary-insertion-sort
+Average Time: 2.7
+Comparisons: 2253395
+==============================================+++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++
+Order: Reversed
+
+Algorithm: selection-sort
+Average Time: 1836
+Comparisons: 2500049999
+==============================================
+Algorithm: insertion-sort
+Average Time: 2309
+Comparisons: 2500049999
+==============================================
+Algorithm: bubble-sort
+Average Time: 4867.3
+Comparisons: 2500049999
+==============================================
+Algorithm: heap-sort
+Average Time: 6.6
+Comparisons: 3612724
+==============================================
+Algorithm: merge-sort
+Average Time: 4.2
+Comparisons: 2683946
+==============================================
+Algorithm: quick-sort
+Average Time: 2514.5
+Comparisons: 2500099998
+==============================================
+Algorithm: counting-sort
+Average Time: 0
+Comparisons: 300002
+==============================================
+Algorithm: radix-sort
+Average Time: 2.6
+Comparisons: 850070
+==============================================
+Algorithm: flash-sort
+Average Time: 0.2
+Comparisons: 552501
+==============================================
+Algorithm: shaker-sort
+Average Time: 4825
+Comparisons: 2500075003
+==============================================
+Algorithm: shell-sort
+Average Time: 3.2
+Comparisons: 2844628
+==============================================
+Algorithm: binary-insertion-sort
+Average Time: 2287.8
+Comparisons: 1252130139
+==============================================+++++++++++++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++

@@ -43,8 +43,8 @@ int main(int argc, char *argv[])
         int *a;
         long long comparisons;
         bool measureTime = false, measureComp = false;
-
-        if (isdigit(argv[3][0]))
+        string input = argv[3];
+        if (isNumber(input))
         {
             int size = stoi(string(argv[3]));
             if (size < 0 || size > 1000000)
@@ -154,7 +154,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            string filename = argv[3];
+            string filename = input;
             int size;
             a = ParseData(filename, size);
             if (size <= 0 || size > 1000000)
@@ -302,57 +302,37 @@ int main(int argc, char *argv[])
         vector<long long> resT(10, 0), resC(10, 0);
 
         if (argc > 2) {
-            int SIZE = stoi(argv[2]);
+            bool issorted = true;
+            string al = argv[2];
+            int SIZE = stoi(argv[3]);
             vector<int> arr(SIZE);
-            ofstream fo("results_" + to_string(SIZE) + ".txt");
-            for (int i = 0; i < 4; i++)
-            { // 4 data types
-                fo << "Order: " << orders[i] << endl;
-                if (i == 0 || i == 1)
-                {
-                    for (int k = 0; k < 12; k++)
-                    { // Each algorithm
-                        resT.assign(10, 0);
-                        resC.assign(10, 0);
-                        for (int j = 0; j < 10; j++)
-                        { // 10 tests for each algorithm
-                            GenerateData(arr.data(), SIZE, i);
-                            RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim, issorted);
-                            resT[j] = tim.count();
-                            resC[j] = comp;
-                        }
-                        // Enable to show results
-                        // for (int i = 0; i < 100; i++) fo << resT[i] << " ";
-                        // for (int i = 0; i < 100; i++) fo << resC[i] << " ";
-                        fo << endl;
-                        fo << "Algorithm: " << algorithmsDB[k] << endl;
-                        fo << "Average Time: " << averageT(resT, 10) << endl;
-                        fo << "Average Comparisons " << averageC(resC, 10) << endl;
-                        fo << "===============================================" << endl;
+            string order = argv[4];
+                if (order == "-rand") {
+                    for (int i = 0; i < 10; i++) {
+                        GenerateData(arr.data(), SIZE, 0);
+                        RunAlgorithmtest(al, arr.data(), SIZE, comp, tim, issorted);
+                        resT[i] = tim.count();
                     }
+                    cout << "Average Randomized time elapsed: " << averageT(resT, 10) << endl;
                 }
-                else if (i == 2 || i == 3)
-                {
-                    issorted = true;
-                    for (int k = 0; k < 12; k++)
-                    { // Each algorithm
-                        resT.assign(10, 0);
-                        GenerateData(arr.data(), SIZE, i);
-                        for (int j = 0; j < 10; j++) {
-                            RunAlgorithmtest(algorithmsDB[k], arr.data(), SIZE, comp, tim, issorted);
-                            resT[j] = tim.count();
-                        }
-                        fo << endl;
-                        fo << "Algorithm: " << algorithmsDB[k] << endl;
-                        fo << "Average Time: " << averageT(resT, 10) << endl;
-                        sortwithcomp(algorithmsDB[k], arr.data(), SIZE, comp);
-                        fo << "Comparisons: " << comp << endl;
-                        fo << "==============================================";
+                else if (order == "-nsorted") {
+                    for (int i = 0; i < 10; i++) {
+                        GenerateData(arr.data(), SIZE, 1);
+                        RunAlgorithmtest(al, arr.data(), SIZE, comp, tim, issorted);
+                        resT[i] = tim.count();
                     }
-                    fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
-                    fo << "+++++++++++++++++++++++++++++++++++++++" << endl;
+                    cout << "Average Nearly Sorted time elapsed: " << averageT(resT, 10) << endl;
                 }
-            }
+                else if (order == "-sorted" || order =="-rev") {
+                    if (order == "-sorted") GenerateData(arr.data(), SIZE, 2);
+                    else GenerateData(arr.data(), SIZE, 3);
+                
+                    for (int i = 0; i < 10; i++) {
+                        RunAlgorithmtest(al, arr.data(), SIZE, comp, tim, issorted);
+                        resT[i] = tim.count();
+                    }
+                    cout << "Average time elapsed: " << averageT(resT, 10) << endl;
+                }
             return 1;
         }
 

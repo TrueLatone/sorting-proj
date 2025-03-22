@@ -79,6 +79,15 @@ void GenerateData(int a[], int n, int dataType)
 
 // FOR EXECUTING ARGUMENTS:
 
+bool isNumber(const string& str) {
+    for (char ch : str) {
+        if (!std::isdigit(ch)) { // Check if all characters are digits
+            return false;
+        }
+    }
+    return !str.empty(); // Ensure it's not an empty string
+}
+
 int* ParseData(string filename, int &size) {
     fstream fi(filename);
     if (!fi.is_open()) {
