@@ -312,6 +312,7 @@ int main(int argc, char *argv[])
                         GenerateData(arr.data(), SIZE, 0);
                         RunAlgorithmtest(al, arr.data(), SIZE, comp, tim, issorted);
                         resT[i] = tim.count();
+                        cout << resT[i] << " ";
                     }
                     cout << "Average Randomized time elapsed: " << averageT(resT, 10) << endl;
                 }
@@ -320,6 +321,7 @@ int main(int argc, char *argv[])
                         GenerateData(arr.data(), SIZE, 1);
                         RunAlgorithmtest(al, arr.data(), SIZE, comp, tim, issorted);
                         resT[i] = tim.count();
+                        cout << resT[i] << " ";
                     }
                     cout << "Average Nearly Sorted time elapsed: " << averageT(resT, 10) << endl;
                 }
@@ -330,6 +332,7 @@ int main(int argc, char *argv[])
                     for (int i = 0; i < 10; i++) {
                         RunAlgorithmtest(al, arr.data(), SIZE, comp, tim, issorted);
                         resT[i] = tim.count();
+                        cout << resT[i] << " ";
                     }
                     cout << "Average time elapsed: " << averageT(resT, 10) << endl;
                 }
